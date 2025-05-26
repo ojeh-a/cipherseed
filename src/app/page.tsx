@@ -1,8 +1,9 @@
-// app/page.tsx
-
+'use client';
 import Link from "next/link";
 import { Lock, Unlock, Info, Github } from "lucide-react";
-import WalletConnectButton from "@/components/walletConnectButton";
+import ConnectEternlClient from "@/components/ConnectEternlClient";
+import ConnectEternlButton from "@/components/connectEternlButton";
+import LighthouseStorage from "@/components/LighthouseStorage";
 
 export default function Home() {
   return (
@@ -39,7 +40,7 @@ export default function Home() {
           </Link>
 
           <div className="absolute top-6 right-6">
-            <WalletConnectButton />
+            <ConnectEternlButton />
           </div>
 
           <a
@@ -51,6 +52,7 @@ export default function Home() {
             <Github /> Contribute on GitHub
           </a>
         </div>
+<LighthouseStorage />
       </div>
     </main>
   );

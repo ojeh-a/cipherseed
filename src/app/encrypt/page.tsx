@@ -13,6 +13,7 @@ export default function EncryptPage() {
   const [customWords, setCustomWords] = useState(["", "", ""]);
   const [positions, setPositions] = useState(["", "", ""]);
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [output, setOutput] = useState("");
 
   const handleEncrypt = () => {
@@ -24,6 +25,8 @@ export default function EncryptPage() {
     ) {
       setOutput("❌ Fill all fields");
       return;
+    } else if (!confirmPassword) {
+      setOutput("❌ Confirm Password");
     }
 
    const fullPhrase = [...phraseWords];
@@ -49,6 +52,7 @@ export default function EncryptPage() {
 
     if (wallets.some(w => w.walletName === walletName)) {
       setOutput("❌ Wallet name already exists. Choose a different name.");
+      return
     }
     wallets.push(walletData);
     localStorage.setItem("wallets", JSON.stringify(wallets));
@@ -59,7 +63,7 @@ export default function EncryptPage() {
   return (
     <main className="min-h-screen bg-black text-white p-6 flex items-center justify-center">
       <div className="max-w-2xl w-full space-y-6 bg-gray-900 border border-gray-800 p-8 rounded-2xl shadow-xl">
-        <h1 className="text-3xl font-bold flex items-center gap-2">
+        <h1 className="text-3xl font-bold flex items-center gap-2 justify-center">
           <Lock className="text-blue-500" /> Encrypt Wallet
         </h1>
 
@@ -80,6 +84,7 @@ export default function EncryptPage() {
           }}
         >
           <option value={12}>12-word phrase</option>
+          <option value={15}>15-word phrase</option>
           <option value={24}>24-word phrase</option>
         </select>
 
@@ -142,8 +147,21 @@ export default function EncryptPage() {
           onChange={(e) => setPassword(e.target.value)}
         />
 
+        <input
+          type="password"
+          placeholder="Confirm Password"
+          className="w-full p-3 bg-gray-800 border border-gray-700 rounded-lg"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+
         <button
-          onClick={handleEncrypt}
+          onClick={() => {
+            if (password !== confirmPassword) {
+              setOutput("❌ Passwords don't match");
+            }
+            else handleEncrypt();
+          }}
           className="w-full bg-blue-600 hover:bg-blue-700 transition py-3 rounded-lg font-semibold"
         >
           Encrypt & Save
