@@ -64,7 +64,7 @@ export default function EncryptPage() {
     <main className="min-h-screen bg-black text-white p-6 flex items-center justify-center">
       <div className="max-w-2xl w-full space-y-6 bg-gray-900 border border-gray-800 p-8 rounded-2xl shadow-xl">
         <h1 className="text-3xl font-bold flex items-center gap-2 justify-center">
-          <Lock className="text-blue-500" /> Encrypt Wallet
+          <Lock className="text-blue-500" /> Secure Backup
         </h1>
 
         <input
@@ -105,6 +105,17 @@ export default function EncryptPage() {
           ))}
         </div>
 
+        <div>
+          {/* <input
+            type="text"
+            onChange={(e) =>
+            setPositions(e.target.value.split(",").map((s) => s.trim()))
+            }
+            className="border p-2"
+            /> */}
+        </div>
+
+            <h1 className="text-center">Replace at positions (e.g., 3, 7, 12):</h1>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {customWords.map((word, i) => (
             <div key={i} className="space-y-2">
@@ -159,8 +170,7 @@ export default function EncryptPage() {
           onClick={() => {
             if (password !== confirmPassword) {
               setOutput("❌ Passwords don't match");
-            }
-            else handleEncrypt();
+            } else handleEncrypt();
           }}
           className="w-full bg-blue-600 hover:bg-blue-700 transition py-3 rounded-lg font-semibold"
         >
