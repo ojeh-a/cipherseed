@@ -1,9 +1,6 @@
 'use client';
 import Link from "next/link";
 import { Lock, Unlock, Info, Github } from "lucide-react";
-import ConnectEternlClient from "@/components/ConnectEternlClient";
-import ConnectEternlButton from "@/components/connectEternlButton";
-import LighthouseStorage from "@/components/LighthouseStorage";
 
 export default function Home() {
   return (
@@ -33,15 +30,18 @@ export default function Home() {
           </Link>
 
           <Link
+            href="./staking"
+            className="flex items-center justify-center gap-2 bg-blue-800 hover:bg-blue-600 text-white font-semibold px-4 py-3 rounded-xl transition col-span-full"
+          >
+             Stake ADA
+          </Link>
+
+          <Link
             href="./about"
             className="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-semibold px-4 py-3 rounded-xl transition col-span-full"
           >
             <Info /> About
           </Link>
-
-          <div className="absolute top-6 right-6">
-            <ConnectEternlButton />
-          </div>
 
           <a
             href="https://github.com/ojeh-a/cipherseed"
@@ -52,7 +52,6 @@ export default function Home() {
             <Github /> Contribute on GitHub
           </a>
         </div>
-<LighthouseStorage />
       </div>
     </main>
   );

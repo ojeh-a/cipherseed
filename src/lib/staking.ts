@@ -3,7 +3,7 @@ import { Lucid, Blockfrost } from "@lucid-evolution/lucid";
 // Initialize Lucid with async/await
 const initializeLucid = async () => {
   const blockfrostApiKey = "preprodT70f78P4qEWkten5BcASVloJs2XlmXqm";
-  return await Lucid.init(
+  return await Lucid(
     new Blockfrost(
       "https://cardano-preprod.blockfrost.io/api/v0",
       blockfrostApiKey
@@ -19,7 +19,7 @@ export const claimRewards = async (userAddress: string) => {
     // 1. Convert contract address to Validator object
     const validator = {
       type: "PlutusV2" as const,
-      script: "YOUR_COMPILED_PLUTUS_SCRIPT_HEX", // From 'aiken blueprint convert'
+      script: "YOUR_COMPILED_PLUTUS_SCRIPT_HEX", // From 'aiken bluepr
     };
 
     // 2. Use BigInt explicitly (TS-safe)

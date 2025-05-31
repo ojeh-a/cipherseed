@@ -15,7 +15,6 @@ export default function ConnectEternlButton() {
       const userAddress = await lucid.wallet().address();
       setAddress(userAddress);
       setConnected(true);
-
     } catch (err) {
       console.error("Connection failed:", err);
       alert("Failed to connect to Eternl wallet.");
@@ -26,14 +25,15 @@ export default function ConnectEternlButton() {
     <div className="space-y-4">
       <button
         onClick={handleConnect}
-        className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+        className="bg-blue-800 text-white hover:bg-blue-700 font-semibold px-4 py-3 rounded-xl transition"
       >
         {connected ? "Wallet Connected" : "Connect Eternl wallet"}
       </button>
 
       {address && (
         <div className="bg-gray-800 text-green-400 p-3 rounded break-all">
-            <strong>Address:</strong>{address}
+          <strong>Address:</strong>
+          {address}
         </div>
       )}
     </div>
